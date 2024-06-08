@@ -21,6 +21,9 @@ alejandra . &>/dev/null \
 # show changes
 git diff -U0 '*.nix'
 
+# stage changes (this is so that flakes work)
+git add . 
+
 echo "NixOS Rebuilding..."
 sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && exit 1)
 
